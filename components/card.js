@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
 const UICard = ({ item }) => {
@@ -12,10 +12,10 @@ const UICard = ({ item }) => {
           }}
         />
       <View style={styles.textContainer}> 
-        <Text>{item.title ? item.title : item.name}</Text>
+        <Text style={{ fontWeight: "bold"}}>{item.title ? item.title : item.name}</Text>
         <Text>Popularity: {item.popularity}</Text>
         <Text>Release Date: {item.release_date}</Text>
-        <Button style={styles.moreDetails}>More Details</Button>
+        <TouchableOpacity style={styles.moreDetails} onPress={() => {}}><Text style={{ color: "#fff"}}>More Details</Text></TouchableOpacity>
       </View>
     </View>
   );
@@ -34,8 +34,14 @@ const styles = StyleSheet.create({
   },
   moreDetails: {
     width: 200,
-    backgroundColor: "aqua",
-    marginTop: 8
+    backgroundColor: "#06b6d4",
+    marginTop: 8,
+    height: 40,
+    padding: 8,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 8
   },
   image: {
     width: 100,

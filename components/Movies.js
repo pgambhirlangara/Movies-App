@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import UICard from "./card";
 import axios from "axios";
 import { API } from "../config/api";
-import { Button, Menu, Divider, Provider } from "react-native-paper";
 import { sortingMovies } from "../constant";
 import DropDownPicker from "react-native-dropdown-picker";
 
@@ -75,8 +74,7 @@ const styles = StyleSheet.create({
   },
   menu: {
     margin: 8,
-    zIndex: 2
-
+    zIndex: 2,
   },
 });
 

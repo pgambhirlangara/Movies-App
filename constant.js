@@ -35,3 +35,19 @@ export const sortingTVShows = [
     label: "Top Rated",
   },
 ];
+
+
+export const searchType = [
+  {
+    label: "multi",
+    value: "multi"
+  },
+  {
+    label: "movie",
+    value: "movie"
+  },
+  {
+    label: "tv",
+    value: "tv"
+  }
+]
