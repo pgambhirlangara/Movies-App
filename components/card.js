@@ -1,21 +1,32 @@
 import React from "react";
 import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
-const UICard = ({ item }) => {
+const UICard = ({ item, navigation, category }) => {
+  const showDetails = () => {
+    navigation.navigate("Detail", {
+      title: item.title,
+      category: category,
+      id: item.id,
+    });
+  };
+
   return (
     <View style={styles.mainContainer}>
-        <Image
-          style={styles.image}
-          source={{
-            uri: `https://image.tmdb.org/t/p/original${item.poster_path}`,
-          }}
-        />
-      <View style={styles.textContainer}> 
-        <Text style={{ fontWeight: "bold"}}>{item.title ? item.title : item.name}</Text>
+      <Image
+        style={styles.image}
+        source={{
+          uri: `https://image.tmdb.org/t/p/original${item.poster_path}`,
+        }}
+      />
+      <View style={styles.textContainer}>
+        <Text style={{ fontWeight: "bold" }}>
+          {item.title ? item.title : item.name}
+        </Text>
         <Text>Popularity: {item.popularity}</Text>
         <Text>Release Date: {item.release_date}</Text>
-        <TouchableOpacity style={styles.moreDetails} onPress={() => {}}><Text style={{ color: "#fff"}}>More Details</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.moreDetails} onPress={showDetails}>
+          <Text style={{ color: "#fff" }}>More Details</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -30,7 +41,7 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
   },
   moreDetails: {
     width: 200,
@@ -41,7 +52,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 8
+    borderRadius: 8,
   },
   image: {
     width: 100,
@@ -50,14 +61,14 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    margin: 20
+    margin: 20,
   },
   textContainer: {
     flexBasis: "75%",
     display: "flex",
     justifyContent: "center",
     alignItems: "flex-start",
-  }
+  },
 });
 
 export default UICard;

@@ -1,34 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./components/Home";
 import { StyleSheet, View } from "react-native";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import SearchResults from "./components/SearchResults";
-import TvShows from "./components/TvShows";
-import Movies from "./components/Movies";
 import { Provider as PaperProvider } from 'react-native-paper';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Detail from "./components/Detail";
 
-const Tab = createMaterialTopTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <PaperProvider>
       <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen
-            name="Movies"
-            children={() => <Movies category={"movie"} />}
-          />
-          <Tab.Screen
-            name="Search Results"
-            children={() => <SearchResults category={"SearchResults"} />}
-          />
-          <Tab.Screen
-            name="Tv Shows"
-            children={() => <TvShows category={"tv"} />}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <Stack.Navigator>
+
+        <Stack.Screen
+          name="home"
+          component={Home}
+          options={{
+            title: "Movies App",
+            headerStyle: {
+              backgroundColor: "#2c3e50",
+            },
+            headerTitleStyle: {
+              color: "#fff",
+            },
+          }}
+        />
+         <Stack.Screen
+          name="Detail"
+          component={Detail}
+          options={{
+            title: "Movies App",
+            headerStyle: {
+              backgroundColor: "#2c3e50",
+            },
+            headerTitleStyle: {
+              color: "#fff",
+            },
+          }}
+        />
+        </Stack.Navigator>
+      </NavigationContainer>  
     </PaperProvider>
   );
 }

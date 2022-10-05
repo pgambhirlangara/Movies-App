@@ -8,6 +8,7 @@ import { sortingMovies, sortingTVShows } from "../constant";
 import DropDownPicker from "react-native-dropdown-picker";
 
 const TvShows = ({ category, navigation }) => {
+  console.log(navigation, "navigation");
   const [isLoading, setIsLoading] = useState(false);
   const [shows, setShows] = useState([]);
   const [type, setType] = useState("popular");
