@@ -75,6 +75,8 @@ const styles = StyleSheet.create({
   },
   menu: {
     margin: 8,
+    zIndex: 2
+
   },
 });
 
