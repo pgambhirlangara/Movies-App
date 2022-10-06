@@ -28,15 +28,13 @@ const Detail = ({ route }) => {
         <View style={{ display: 'flex', justifyContent: "center", alignItems: "center"}}>
           <Text fontWeight="bold" fontSize={24}>
             {details.title ? details.title : details.name}
-            {console.log(`https://image.tmdb.org/t/p/original${details.poster_path}`)}
           </Text>
           {details.poster_path ? (
             <Image
               source={{
                 uri: `https://image.tmdb.org/t/p/original${details.poster_path}`,
               }}
-              height={200}
-              width={200}
+              style={{ width: 300, height: 200, margin: 8}}
               alt={details.title ? details.title : details.name}
             />
           ) : (
