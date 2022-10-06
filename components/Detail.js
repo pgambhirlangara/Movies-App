@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API } from "../config/api";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 
 const Detail = ({ route }) => {
   const { id, category } = route.params;
@@ -17,14 +17,18 @@ const Detail = ({ route }) => {
       .catch((error) => console.log(error));
   };
 
-  useEffect(fetchDetails(), []);
+    useEffect(() => {
+      fetchDetails()
+
+    }, [])
 
   return (
     <View style={styles.container}>
       {details && (
-        <View>
+        <View style={{ display: 'flex', justifyContent: "center", alignItems: "center"}}>
           <Text fontWeight="bold" fontSize={24}>
             {details.title ? details.title : details.name}
+            {console.log(`https://image.tmdb.org/t/p/original${details.poster_path}`)}
           </Text>
           {details.poster_path ? (
             <Image
@@ -45,7 +49,8 @@ const Detail = ({ route }) => {
           </View>
           <View>
             <Text fontSize={10}>
-              Popularity: {details.popularity} | Release Date: {details.releaseDate}
+              Popularity: {details.popularity} | Release Date:{" "}
+              {details.releaseDate}
             </Text>
           </View>
         </View>
